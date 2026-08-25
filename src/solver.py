@@ -54,4 +54,22 @@ def compute_next_generation(grid):
     # TODO: Use your `count_neighbors` function to find out how many neighbors it has.
     # TODO: Apply the 4 Rules of Life to determine if it should be 1 (alive) or 0 (dead) in `next_grid`.
 
+    for i in range(0,rows):
+        for j in range(0, cols):
+            neighborNo = count_neighbors(grid,i,j)
+
+            if (grid[i][j] == 1):
+                if (neighborNo < 2):
+                    s = 0
+                elif (neighborNo == 2 or neighborNo == 3):
+                    s = 1
+                elif (neighborNo > 3):
+                    s = 0
+            else:
+                if (neighborNo == 3):
+                    s = 1
+                else: s = 0
+
+            next_grid[i][j] = s
+
     return next_grid
